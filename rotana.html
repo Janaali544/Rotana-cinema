@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روتانا سينما - مش هتقدر تغمض عينيك</title>
+    <!-- خط تجوال و أميري من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --secondary-gold: #FFD700;
+            --dark-gold: #997A15;
+            --rotana-green: #00875A;
+            --rotana-green-dark: #005A3C;
+            --bg-dark: #0B0D12;
+            --bg-card: #151922;
+            --bg-card-hover: #1E2430;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation Navbar */
+        header {
+            background: rgba(11, 13, 18, 0.95);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--secondary-gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            font-size: 1.4rem;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFF, var(--primary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .live-btn {
+            background: linear-gradient(135deg, var(--rotana-green), var(--rotana-green-dark));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 135, 90, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .live-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #FF4D4D;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 77, 77, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            padding: 160px 20px 80px;
+            background: linear-gradient(to bottom, rgba(11, 13, 18, 0.7), var(--bg-dark)), 
+                        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--bg-dark), transparent);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slogan-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--primary-gold);
+            color: var(--secondary-gold);
+            padding: 8px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-family: 'Amiri', serif;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        /* Main Section Wrapper Styles */
+        section {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 70px 25px;
+        }
+
+        .section-header {
+            margin-bottom: 45px;
+            border-right: 5px solid var(--primary-gold);
+            padding-right: 18px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #FFF;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* SECTION 1: المسلسلات والأفلام العارضة */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .show-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .show-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .show-img {
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .show-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--rotana-green);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .show-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .show-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #FFF;
+            margin-bottom: 8px;
+        }
+
+        .show-meta {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .show-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        /* SECTION 2: نجوم وممثلين روتانا */
+        .stars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .star-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .star-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .star-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--primary-gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .star-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #FFF;
+            margin-bottom: 5px;
+        }
+
+        .star-role {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 12px;
+        }
+
+        .star-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* SECTION 3: جدول مواعيد اليوم */
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .schedule-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-right: 4px solid var(--primary-gold);
+            transition: background 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .time-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-gold);
+            font-weight: 800;
+            font-size: 1.1rem;
+            min-width: 140px;
+        }
+
+        .show-details {
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
+        .show-details h4 {
+            font-size: 1.15rem;
+            color: #FFF;
+            font-weight: 700;
+        }
+
+        .show-details span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .status-badge {
+            background: rgba(0, 135, 90, 0.2);
+            color: #00FF9D;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        /* SECTION 4: أشهر الإيفيهات واقتباسات السينما */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), var(--bg-card));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .quote-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--secondary-gold);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .quote-movie {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        /* SECTION 5: تردد القناة وطرق التواصل */
+        .freq-container {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .freq-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            border-right: 3px solid var(--rotana-green);
+        }
+
+        .freq-box h3 {
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .freq-list {
+            list-style: none;
+        }
+
+        .freq-list li {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .freq-list li strong {
+            color: #FFF;
+        }
+
+        /* Footer */
+        footer {
+            background: #06070A;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 35px 25px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: var(--primary-gold);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.3rem; }
+            .schedule-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .show-details { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">R</div>
+                <div class="logo-text">روتانا سينما</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#shows">العروض والأعمال</a></li>
+                <li><a href="#stars">نجوم القناة</a></li>
+                <li><a href="#schedule">جدول العرض</a></li>
+                <li><a href="#quotes">أشهر الإيفيهات</a></li>
+                <li><a href="#frequency">التردد</a></li>
+            </ul>
+            <a href="#schedule" class="live-btn">
+                <span class="pulse-dot"></span>
+                بث مباشر
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="slogan-badge">🎬 الشعار الخالد: مش هتقدر تغمض عينيك</div>
+            <h1>موطن السينما العربية والدراما الخالدة</h1>
+            <p>أكبر مكتبة أفلام ومسلسلات عربية في الشرق الأوسط. نجمع لك بين كلاسيكيات الزمن الجميل وأحدث الإنتاجات السينمائية على مدار 24 ساعة.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 1: المسلسلات والأعمال العارضة -->
+    <section id="shows">
+        <div class="section-header">
+            <h2>أبرز المسلسلات والأعمال العارضة</h2>
+            <p>مختارات درامية وسينمائية تعرض حالياً على شاشة القناة</p>
+        </div>
+        <div class="grid-cards">
+            
+            <div class="show-card">
+                <div class="show-img" style="background-image: url(file_00000000d7ec81f5b94971566520ba6e.png);">
+                    <span class="show-badge">مسلسل يومي</span>
+                </div>
+                <div class="show-info">
+                    <div>
+                        <div class="show-title">الفتوة</div>
+                        <div class="show-meta">بطولة: ياسر جلال، مي عمر</div>
+                        <div class="show-desc">تدور الأحداث في أحياء القاهرة القديمة وصراع الفتوات في ملحمة درامية شعبية تعود بنا إلى الحارة المصرية القديمة.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="show-card">
+                <div class="show-img" style="background-image: url(file_00000000135c8230b735a12de1f98b07.png);">
+                    <span class="show-badge">دراما وتشويق</span>
+                </div>
+                <div class="show-info">
+                    <div>
+                        <div class="show-title">جعفر العمدة</div>
+                        <div class="show-meta">بطولة: محمد رمضان، زينة</div>
+                        <div class="show-desc">رحلة البحث عن الابن المفقود وسط صراعات عائلية وتجارية في منطقة السيدة زينب بالقاهرة.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="show-card">
+                <div class="show-img" style="background-image: url(file_00000000205881f8a9b0ad536cfae055.png);">
+                    <span class="show-badge">سهرة الليلة</span>
+                </div>
+                <div class="show-info">
+                    <div>
+                        <div class="show-title">فيلم: الكنز</div>
+                        <div class="show-meta">بطولة: محمد سعد، محمد رمضان</div>
+                        <div class="show-desc">ملحمة تاريخية تدور في عدة عصور متتابعة بحثاً عن الثروة والحقيقة عبر التاريخ المصري.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="show-card">
+                <div class="show-img" style="background-image: url(IMG-20260910-WA6752.jpg);">
+                    <span class="show-badge">كوميديا</span>
+                </div>
+                <div class="show-info">
+                    <div>
+                        <div class="show-title">فيلم: البدلة</div>
+                        <div class="show-meta">بطولة: تامر حسني، أكرم حسني</div>
+                        <div class="show-desc">مواقف كوميدية ساخرة تحدث لمفاوضين يرتديان زي الشرطة في حفلة تنكرية تتطور إلى أحداث غير متوقعة.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: كبار الممثلين والنجوم -->
+    <section id="stars">
+        <div class="section-header">
+            <h2>نجوم ونجمات شاشة روتانا</h2>
+            <p>أبرز الوجوه والأساطير التي تتزين بهم القناة</p>
+        </div>
+        <div class="stars-grid">
+            
+            <div class="star-card">
+                <div class="star-avatar" style="background-image: url(IMG-20260910-WA0472.jpg);"></div>
+                <div class="star-name">عادل إمام</div>
+                <div class="star-role">زعيم الكوميديا والسينما</div>
+                <span class="star-tag">أكثر من 100 فيلم</span>
+            </div>
+
+            <div class="star-card">
+                <div class="star-avatar" style="background-image: url(IMG-20260910-WA3021.jpg);"></div>
+                <div class="star-name">أحمد حلمي</div>
+                <div class="star-role">نجم الكوميديا السوداء</div>
+                <span class="star-tag">أعمال خاصة بروتانا</span>
+            </div>
+
+            <div class="star-card">
+                <div class="star-avatar" style="background-image: url(IMG-20260910-WA0470.jpg);"></div>
+                <div class="star-name">منى زكي</div>
+                <div class="star-role">سفيرة الدراما العربية</div>
+                <span class="star-tag">أدوار بطولية متعددة</span>
+            </div>
+
+            <div class="star-card">
+                <div class="star-avatar" style="background-image: url(IMG-20260910-WA0471.jpg);"></div>
+                <div class="star-name">كريم عبد العزيز</div>
+                <div class="star-role">نجم الحركة والتشويق</div>
+                <span class="star-tag">أعلى الإيرادات</span>
+            </div>
+            
+           <div class="star-card">
+               <div class="star-avatar" style="background-image: url(IMG-20260910-WA0474.jpg);"></div>
+               <div class="star-name">محمد هنيدي</div>
+               <div class="star-role">نجم الكوميديا في مصر والعالم العربي</div>
+               <span class="star-tag">منقذ السينما</span>
+           </div>
+
+    </section>
+
+    <!-- SECTION 3: جدول مواعيد اليوم -->
+    <section id="schedule">
+        <div class="section-header">
+            <h2>جدول العرض اليومي</h2>
+            <p>لا تفوّت مواعيد عرض أفلامك ومسلسلاتك المفضلة</p>
+        </div>
+        <div class="schedule-list">
+            
+            <div class="schedule-item">
+                <div class="time-box">⏰ 04:00 مساءً</div>
+                <div class="show-details">
+                    <h4>مسلسل الفتوة (الحلقة 12)</h4>
+                    <span>دراما شعبية - إعادة الأولى</span>
+                </div>
+                <span class="status-badge" style="background: rgba(212, 175, 55, 0.2); color: var(--secondary-gold); border-color: var(--primary-gold);">القادم</span>
+            </div>
+
+            <div class="schedule-item" style="border-right-color: var(--rotana-green);">
+                <div class="time-box" style="color: #00FF9D;">⏰ 07:00 مساءً</div>
+                <div class="show-details">
+                    <h4>فيلم السهرة الكوميدي (عسل أسود)</h4>
+                    <span>بطولة أحمد حلمي - عرض رئيسي</span>
+                </div>
+                <span class="status-badge">يعرض الآن 🔴</span>
+            </div>
+
+            <div class="schedule-item">
+                <div class="time-box">⏰ 10:00 مساءً</div>
+                <div class="show-details">
+                    <h4>مسلسل جعفر العمدة (الحلقة 20)</h4>
+                    <span>العرض الأسبوعي الترفيهي</span>
+                </div>
+                <span class="status-badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted); border: none;">لاحقاً</span>
+            </div>
+
+            <div class="schedule-item">
+                <div class="time-box">⏰ 01:00 صباحاً</div>
+                <div class="show-details">
+                    <h4>فيلم الأكشن (الخلية)</h4>
+                    <span>بطولة أحمد عز - سهرة منتصف الليل</span>
+                </div>
+                <span class="status-badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted); border: none;">لاحقاً</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: أشهر الإيفيهات الخالدة -->
+    <section id="quotes">
+        <div class="section-header">
+            <h2>أشهر إيفيهات سينما روتانا</h2>
+            <p>جمل وعبارات سينمائية علقت في أذهان الجمهور العربي</p>
+        </div>
+        <div class="quotes-grid">
+            
+            <div class="quote-card">
+                <div class="quote-text">"يا معلّم.. إحنا اللي بنعمل الفلوس، مش الفلوس هي اللي بتعملنا!"</div>
+                <div class="quote-author">الراحل نور الشريف</div>
+                <div class="quote-movie">فيلم: العار</div>
+            </div>
+
+            <div class="quote-card">
+                <div class="quote-text">"جوزني يابا.. عاوز أتجوز وأعيش ملك!"</div>
+                <div class="quote-author">محمد هنيدي</div>
+                <div class="quote-movie">فيلم: صعيدي في الجامعة الأمريكية</div>
+            </div>
+
+            <div class="quote-card">
+                <div class="quote-text">"لو كل واحد اهتم بنفسه وبشغله.. البلد دي هتبقى في مكان تاني خالص."</div>
+                <div class="quote-author">أحمد حلمي</div>
+                <div class="quote-movie">فيلم: أسف على الإزعاج</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: التردد والاستقبال -->
+    <section id="frequency">
+        <div class="section-header">
+            <h2>تردد القناة وطرق الاستقبال</h2>
+            <p>اضبط جهاز الاستقبال لديك لمتابعة البث بأعلى جودة HD</p>
+        </div>
+        <div class="freq-container">
+            
+            <div class="freq-box">
+                <h3>القمر الصناعي: نايل سات (Nilesat)</h3>
+                <ul class="freq-list">
+                    <li>التردد: <strong>12226 / 11843</strong></li>
+                    <li>الاستقطاب: <strong>أفقي (H)</strong></li>
+                    <li>معدل الترميز: <strong>27500</strong></li>
+                    <li>معامل تصحيح الخطأ: <strong>5/6</strong></li>
+                    <li>الجودة: <strong>HD / SD</strong></li>
+                </ul>
+            </div>
+
+            <div class="freq-box" style="border-right-color: var(--primary-gold);">
+                <h3>القمر الصناعي: عرب سات (Arabsat)</h3>
+                <ul class="freq-list">
+                    <li>التردد: <strong>11843</strong></li>
+                    <li>الاستقطاب: <strong>رأسي (V)</strong></li>
+                    <li>معدل الترميز: <strong>27500</strong></li>
+                    <li>معامل تصحيح الخطأ: <strong>3/4</strong></li>
+                    <li>الجودة: <strong>Ultra HD</strong></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 لمجموعة شبكة قنوات <strong>روتانا سينما</strong> | "مش هتقدر تغمض عينيك"</p>
+    </footer>
+
+</body>
+</html>
